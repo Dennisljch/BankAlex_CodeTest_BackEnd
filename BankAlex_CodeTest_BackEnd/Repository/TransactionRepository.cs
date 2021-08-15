@@ -29,6 +29,14 @@ namespace BankAlex_CodeTest_BackEnd.Repository
         public bool AddTransaction(Transaction transaction)
         {
             _appDbContext.Transactions.Add(transaction);
+
+            Customer existingCustomer = _appDbContext.Customers.Where(c => c.Id == transaction.Owner.Id).FirstOrDefault();
+            if (existingCustomer != null)
+            {
+                var existingCustomerEntry = _appDbContext.Entry(existingCustomer);
+                existingCustomerEntry.State = EntityState.Unchanged;
+            }
+
             _appDbContext.SaveChanges();
 
             return true;
