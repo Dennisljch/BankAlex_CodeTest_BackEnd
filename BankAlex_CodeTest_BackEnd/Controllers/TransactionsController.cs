@@ -7,16 +7,40 @@ using System.Threading.Tasks;
 
 namespace BankAlex_CodeTest_BackEnd.Controllers
 {
-    [Route("api/transactions")]
+    [Route("[controller]")]
     [ApiController]
     public class TransactionsController : ControllerBase
     {
-        [HttpGet(Name = nameof(GetTransaction))]
+        [HttpGet]
         public IActionResult GetTransaction()
         {
             var response = new
             {
-                href = Url.Link(nameof(GetTransaction), null)
+                href = nameof(GetTransaction)
+            };
+
+            return Ok(response);
+        }
+
+
+        [HttpPost]
+        public IActionResult PostTransaction()
+        {
+            var response = new
+            {
+                href = nameof(PostTransaction)
+            };
+
+            return Ok(response);
+        }
+
+
+        [HttpPut("{id:int}")]
+        public IActionResult PutTransaction(int id)
+        {
+            var response = new
+            {
+                href = nameof(PutTransaction) + $" {id}"
             };
 
             return Ok(response);
