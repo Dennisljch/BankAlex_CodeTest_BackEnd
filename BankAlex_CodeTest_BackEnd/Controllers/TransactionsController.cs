@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BankAlex_CodeTest_BackEnd.Interfaces.Repository;
+using BankAlex_CodeTest_BackEnd.Repository;
 
 namespace BankAlex_CodeTest_BackEnd.Controllers
 {
@@ -12,39 +14,36 @@ namespace BankAlex_CodeTest_BackEnd.Controllers
     [ApiController]
     public class TransactionsController : ControllerBase
     {
+        private readonly ITransactionRepository _transactionRepository;
+        public TransactionsController(ITransactionRepository transactionRepository)
+        {
+            _transactionRepository = transactionRepository;
+        }
+
         [HttpGet]
         public IActionResult GetTransaction()
         {
-            var response = new
-            {
-                href = nameof(GetTransaction)
-            };
+            var transactions = _transactionRepository.AllTransactions;
 
-            return Ok(response);
+            return Ok(transactions);
         }
 
 
         [HttpPost]
         public IActionResult PostTransaction(Transaction transaction)
         {
-            var response = new
-            {
-                href = nameof(PostTransaction) + $" Amount: {transaction.Amount} Owner Name: {transaction.Owner.Name}"
-            };
+            _transactionRepository.AddTransaction(transaction);
 
-            return Ok(response);
+            return Ok();
         }
 
 
         [HttpPut("{id:guid}")]
         public IActionResult PutTransaction(Guid id, Transaction transaction)
         {
-            var response = new
-            {
-                href = nameof(PutTransaction) + $" {id}" + $" Amount: {transaction.Amount} Owner Name: {transaction.Owner.Name}"
-            };
+            _transactionRepository.UpdateTransaction(id, transaction);
 
-            return Ok(response);
+            return Ok();
         }
     }
 }
