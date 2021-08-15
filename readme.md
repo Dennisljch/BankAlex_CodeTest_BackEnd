@@ -1,1 +1,1 @@
-
+Security idea: use JWT web token once the user is authenticated
