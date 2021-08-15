@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAlex_CodeTest_BackEnd", "BankAlex_CodeTest_BackEnd\BankAlex_CodeTest_BackEnd.csproj", "{94714B15-384D-4957-BB4F-65EB5C15CD8E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{0F8A0259-ECA8-47FB-9C29-5CC8930F279D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F3E1B6D1-C072-4B57-AD41-247719C23B11}"
 	ProjectSection(SolutionItems) = preProject
 		readme.md = readme.md
@@ -22,10 +20,6 @@ Global
 		{94714B15-384D-4957-BB4F-65EB5C15CD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94714B15-384D-4957-BB4F-65EB5C15CD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94714B15-384D-4957-BB4F-65EB5C15CD8E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0F8A0259-ECA8-47FB-9C29-5CC8930F279D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F8A0259-ECA8-47FB-9C29-5CC8930F279D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F8A0259-ECA8-47FB-9C29-5CC8930F279D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F8A0259-ECA8-47FB-9C29-5CC8930F279D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

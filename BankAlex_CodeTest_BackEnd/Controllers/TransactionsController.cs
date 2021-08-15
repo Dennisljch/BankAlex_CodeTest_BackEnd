@@ -25,23 +25,23 @@ namespace BankAlex_CodeTest_BackEnd.Controllers
 
 
         [HttpPost]
-        public IActionResult PostTransaction()
+        public IActionResult PostTransaction(Transaction transaction)
         {
             var response = new
             {
-                href = nameof(PostTransaction)
+                href = nameof(PostTransaction) + $" Amount: {transaction.Amount} Owner Name: {transaction.Owner.Name}"
             };
 
             return Ok(response);
         }
 
 
-        [HttpPut("{id:int}")]
-        public IActionResult PutTransaction(int id)
+        [HttpPut("{id:guid}")]
+        public IActionResult PutTransaction(Guid id, Transaction transaction)
         {
             var response = new
             {
-                href = nameof(PutTransaction) + $" {id}"
+                href = nameof(PutTransaction) + $" {id}" + $" Amount: {transaction.Amount} Owner Name: {transaction.Owner.Name}"
             };
 
             return Ok(response);
