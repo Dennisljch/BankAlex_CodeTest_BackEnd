@@ -21,7 +21,7 @@ namespace BankAlex_CodeTest_BackEnd.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetTransaction()
+        public IActionResult Get()
         {
             var transactions = _transactionRepository.AllTransactions;
 
@@ -30,20 +30,34 @@ namespace BankAlex_CodeTest_BackEnd.Controllers
 
 
         [HttpPost]
-        public IActionResult PostTransaction(Transaction transaction)
+        public IActionResult Post(Transaction transaction)
         {
-            _transactionRepository.AddTransaction(transaction);
+            try
+            {
+                _transactionRepository.AddTransaction(transaction);
 
-            return Ok();
+                return Ok("transaction created");
+            }
+            catch
+            {
+                return BadRequest("validation errors");
+            }
         }
 
 
         [HttpPut("{id:guid}")]
-        public IActionResult PutTransaction(Guid id, Transaction transaction)
+        public IActionResult Put(Guid id, Transaction transaction)
         {
-            _transactionRepository.UpdateTransaction(id, transaction);
+            try
+            {
+                _transactionRepository.UpdateTransaction(id, transaction);
 
-            return Ok();
+                return Ok("transaction updated");
+            }
+            catch
+            {
+                return BadRequest("validation errors");
+            }
         }
     }
 }

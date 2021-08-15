@@ -21,7 +21,7 @@ namespace BankAlex_CodeTest_BackEnd.Repository
         {
             get
             {
-                IQueryable<Transaction> allTransactions = _appDbContext.Transactions;
+                IQueryable<Transaction> allTransactions = _appDbContext.Transactions.Include(c => c.Owner);
                 return allTransactions;
             }
         }
@@ -38,7 +38,8 @@ namespace BankAlex_CodeTest_BackEnd.Repository
         {
             var transactionEntry = _appDbContext.Entry(transaction);
             transactionEntry.State = EntityState.Modified;
-            //_appDbContext.Entry(transaction).Property(x => x.Id).IsModified = false;
+            var ownerEntry = _appDbContext.Entry(transaction.Owner);
+            ownerEntry.State = EntityState.Modified;
 
             _appDbContext.SaveChanges();
 
